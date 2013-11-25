@@ -2,13 +2,13 @@
 
 Summary:	A collection of enhancements to the Python distutils
 Name:		python-setuptools
-Version:	1.0
+Version:	1.4.1
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Python
 Source0:	http://cheeseshop.python.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
-# Source0-md5:	3d196ffb6e5e4425daddbb4fe42a4a74
+# Source0-md5:	65bb270fbae373c26a2fa890ad907818
 URL:		http://peak.telecommunity.com/DevCenter/setuptools
 BuildRequires:	python-devel
 BuildArch:	noarch
