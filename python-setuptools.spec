@@ -1,15 +1,15 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/python-setuptools.git
 %define		module	setuptools
-
 Summary:	A collection of enhancements to the Python distutils
 Name:		python-setuptools
-Version:	6.0.2
-Release:	1
+Version:	14.1.1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Python
-Source0:	http://cheeseshop.python.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
-# Source0-md5:	b79fab610e362fe8e3a9cb92fb9d95ef
-URL:		http://peak.telecommunity.com/DevCenter/setuptools
+Source0:	http://pypi.python.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
+# Source0-md5:	babf06056ce4314cd4c51259582982b7
+URL:		https://pypi.python.org/pypi/setuptools
 BuildRequires:	python-devel
 BuildArch:	noarch
 Requires:	python-modules
@@ -58,8 +58,11 @@ rm -rf $RPM_BUILD_ROOT
 	--optimize 2				\
 	--root=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/pkg_resources/tests
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/pkg_resources/tests
+
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/easy_install
-ln -s easy_install-3.3 $RPM_BUILD_ROOT%{_bindir}/easy_install
+ln -s easy_install-3.4 $RPM_BUILD_ROOT%{_bindir}/easy_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,14 +75,16 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/*.py[co]
 %dir %{py_sitescriptdir}/_markerlib
 %{py_sitescriptdir}/_markerlib/*.py[co]
+%{py_sitescriptdir}/pkg_resources
 
 %files -n python3-setuptools
 %defattr(644,root,root,755)
 %doc *.txt
 %attr(755,root,root) %{_bindir}/easy_install
-%attr(755,root,root) %{_bindir}/easy_install-3.3
+%attr(755,root,root) %{_bindir}/easy_install-3.4
 %{py3_sitescriptdir}/%{module}*
 %{py3_sitescriptdir}/__pycache__/*.py[co]
 %{py3_sitescriptdir}/*.py
 %{py3_sitescriptdir}/_markerlib
+%{py3_sitescriptdir}/pkg_resources
 
